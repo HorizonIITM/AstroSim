@@ -9,39 +9,22 @@
 
  //abstract class
 class Derivative{
-    protected:
-        GravitationalSystem& sys;
-        short int& coordType; //x or y or z
-        GravitationalBody& current_body;
     public:
-        Derivative(GravitationalSystem&, short int&, GravitationalBody&);
-        valtype operator() (valtype, valtype) const;
+        vector<vector<valtype>> PositionDerivative(vector <GravitationalBody>);
+        vector<vector<valtype>> MomentumDerivative(vector <GravitationalBody>);
 };
 
-
-class PositionDerivative : public Derivative{
+class GravitationalIntegrator : public GravitationalSystem, public Derivative{
     public:
-        PositionDerivative(GravitationalSystem&, short int&,GravitationalBody&);
-        valtype operator() (valtype, valtype) const;
-};
-
-
-class MomentumDerivative : public Derivative{
-    public:
-        MomentumDerivative(GravitationalSystem&, short int&,GravitationalBody&);
-
-        valtype operator() (valtype, valtype) const;
-};
-
-
-
-class GravitationalIntegrator : private Integrator, public GravitationalSystem{
-    public:
-        string integrator;
-        GravitationalIntegrator(vector<GravitationalBody>, valtype, valtype = 0, string = "euler");
-        GravitationalIntegrator(string infile, valtype, valtype = 0, string = "euler");
+        valtype step;
+        GravitationalIntegrator(vector<GravitationalBody>, valtype, valtype = 0);
+        GravitationalIntegrator(string infile, valtype, valtype = 0);
     
     private:
+        GravitationalSystem Step1();
+        GravitationalSystem Step2(GravitationalSystem);
+        GravitationalSystem Step3(GravitationalSystem);
+        GravitationalSystem Step4(GravitationalSystem);
         void nextStepAll();
     public: 
         void solve(const valtype totalProgTime, const string filename = "");
