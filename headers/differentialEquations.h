@@ -21,10 +21,10 @@ class GravitationalIntegrator : public GravitationalSystem, public Derivative{
         GravitationalIntegrator(string infile, valtype, valtype = 0);
     
     private:
-        GravitationalSystem Step1();
-        GravitationalSystem Step2(GravitationalSystem);
-        GravitationalSystem Step3(GravitationalSystem);
-        GravitationalSystem Step4(GravitationalSystem);
+        vector<GravitationalBody>  Step1();
+        vector<GravitationalBody>  Step2(vector<GravitationalBody> );
+        vector<GravitationalBody>  Step3(vector<GravitationalBody> );
+        vector<GravitationalBody>  Step4(vector<GravitationalBody> );
         void nextStepAll();
     public: 
         void solve(const valtype totalProgTime, const string filename = "");
