@@ -1,9 +1,8 @@
 build:
 	g++ -c simulation_code/body.cpp      				-o assemblies/body.o 
 	g++ -c simulation_code/differentialEquations.cpp  	-o assemblies/differentialEquations.o
-	g++ -c simulation_code/integrators.cpp 				-o assemblies/integrators.o
 	g++ -c simulation_code/utils.cpp       				-o assemblies/utils.o
-	g++ -o sim.exe simulation_code/main.cpp assemblies/differentialEquations.o assemblies/body.o assemblies/integrators.o assemblies/utils.o
+	g++ -o sim.exe simulation_code/main.cpp assemblies/differentialEquations.o assemblies/body.o assemblies/utils.o
 
 run: build
 	sim.exe "outfile.txt" "infile.txt" 20000 0.01

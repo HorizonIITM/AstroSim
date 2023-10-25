@@ -5,10 +5,10 @@
 #ifndef BODY_H_
 #define BODY_H_
 
-// #include <iostream>
-// using std::cout;
-// using std::endl;
-// using std::cin;
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::cin;
 
 #include <fstream>
 using std::ofstream;
