@@ -28,6 +28,8 @@ struct GravitationalBody{
 
     GravitationalBody(int, valtype, vector<valtype>, vector<valtype>);
     void writeCoords(ofstream&, string, string)const;
+
+    vector<valtype> find_angular_momentum();
 };
 
 struct GravitationalSystem{
@@ -38,6 +40,8 @@ struct GravitationalSystem{
     GravitationalSystem(string , valtype );
 
     void writeBodyCoords(std::ofstream& outstream, std::string coordSep, std::string bodySep, std::string end )const;
+
+    vector<valtype> check_angular_momentum();
 };
 
 #endif
