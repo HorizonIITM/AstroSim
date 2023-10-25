@@ -5,10 +5,10 @@
 
 int main(int argc, char *argv[]) {
     string outfile = "nbodyoutput.txt";
-    string infile = "";
-    valtype totalProgTime = 20000;
+    string infile = "infile.txt";
+    valtype totalProgTime = 2000;
     valtype step = 0.01;
-    if(argc>1){
+    /*if (argc>1) {
         outfile = argv[1];
     }
     if(argc>2){
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     }
     if(argc>4){
         step = atof(argv[4]);
-    }
+    }*/
     cout<<"Taking total time = "<<totalProgTime<<endl;
     cout<<"Taking step time = "<<step<<endl;
     

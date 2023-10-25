@@ -40,6 +40,7 @@ class GravitationalIntegrator : private Integrator, public GravitationalSystem{
         string integrator;
         GravitationalIntegrator(vector<GravitationalBody>, valtype, valtype = 0, string = "euler");
         GravitationalIntegrator(string infile, valtype, valtype = 0, string = "euler");
+        bool check_conservation = 1;  //Can check if a particular integrator/timestep combo conserves, and then switch off to prevent unnecessary overhead.
     
     private:
         void nextStepAll();

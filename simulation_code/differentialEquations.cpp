@@ -48,16 +48,32 @@ void GravitationalIntegrator:: nextStepAll(){
 void GravitationalIntegrator:: solve(const valtype totalProgTime, const string filename){
     bool writeFlag = filename=="" ? false : true;
     ofstream my_file(filename); 
+    ofstream ang_mom("conservation_h.txt");
+
+    vector<valtype>total_angular_momentum = this->check_angular_momentum();
+
     if(writeFlag) {
         //my_file<<"x1,y1,z1,,,x2,y2,z2,,,x3,y3,z3,,,"<<endl; //scam
         for(int i=1;i<=(this->bodies).size();i++){
             my_file<<"x"<<i<<",y"<<i<<",z"<<i<<",";
         }
         my_file<<"\n";
+
     }
+
+    if (check_conservation) {
+        ang_mom << "h_x" << ",h_y" << ",h_z" << "\n";
+        ang_mom << total_angular_momentum[0] << "," << total_angular_momentum[1] << "," << total_angular_momentum[2] << "\n";
+    }
+
     while(this->progTime<totalProgTime){
         if(writeFlag) this->writeBodyCoords(my_file, ",", "", "\n");
         nextStepAll();
+        if (check_conservation) {
+            total_angular_momentum = this->check_angular_momentum();
+            ang_mom << total_angular_momentum[0] << "," << total_angular_momentum[1] << "," << total_angular_momentum[2] << "\n";
+        }
     }
     if(writeFlag) this->writeBodyCoords(my_file, ",", "", "\n");
+    ang_mom.close();
 }
