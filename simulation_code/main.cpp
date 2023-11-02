@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     cout<<"Taking total time = "<<totalProgTime<<endl;
     cout<<"Taking step time = "<<step<<endl;
     
-    GravitationalIntegrator my_solver(infile, step);
+    GravitationalIntegrator my_solver(std::move(infile), step);
     my_solver.solve(totalProgTime, outfile);
     return 0;
 }

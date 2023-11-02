@@ -29,9 +29,9 @@ valtype MomentumDerivative:: operator() (valtype t, valtype px) const{
 }
 
 
-GravitationalIntegrator:: GravitationalIntegrator(std::vector<GravitationalBody> bodies, valtype step, valtype progTime, std::string integrator):  GravitationalSystem(bodies, progTime), Integrator(step,integrator){}
+GravitationalIntegrator:: GravitationalIntegrator(std::vector<GravitationalBody>&& bodies, valtype step, valtype progTime, std::string integrator):  GravitationalSystem(std::move(bodies), progTime), Integrator(step,integrator){}
 
-GravitationalIntegrator:: GravitationalIntegrator(string infile, valtype step, valtype progTime, std::string integrator):  GravitationalSystem(infile, progTime), Integrator(step,integrator){}
+GravitationalIntegrator:: GravitationalIntegrator(string&& infile, valtype step, valtype progTime, std::string integrator):  GravitationalSystem(std::move(infile), progTime), Integrator(step,integrator){}
 
 
 void GravitationalIntegrator:: nextStepAll(){

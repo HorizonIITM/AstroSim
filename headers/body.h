@@ -1,9 +1,4 @@
 #pragma once
-/*
- * BODY.H
- */
-#ifndef BODY_H_
-#define BODY_H_
 
 // #include <iostream>
 // using std::cout;
@@ -27,17 +22,15 @@ struct GravitationalBody{
     vector<valtype> momentum;
 
     GravitationalBody(int, valtype, vector<valtype>, vector<valtype>);
-    void writeCoords(ofstream&, string, string)const;
+    void writeCoords(ofstream&, const string&, const string&)const;
 };
 
 struct GravitationalSystem{
     vector<GravitationalBody> bodies;
     valtype progTime;
 
-    GravitationalSystem(vector<GravitationalBody> , valtype );
-    GravitationalSystem(string , valtype );
+    GravitationalSystem(vector<GravitationalBody>&&, valtype);
+    GravitationalSystem(string&&, valtype);
 
     void writeBodyCoords(std::ofstream& outstream, std::string coordSep, std::string bodySep, std::string end )const;
 };
-
-#endif

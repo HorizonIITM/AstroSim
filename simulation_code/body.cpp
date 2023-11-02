@@ -2,16 +2,16 @@
 
 GravitationalBody:: GravitationalBody(int ID, valtype mass, vector<valtype> position, vector<valtype> momentum): ID(ID), mass(mass), position(position), momentum(momentum){}
 
-void GravitationalBody:: writeCoords(ofstream& outstream, string sep, string end)const {
+void GravitationalBody:: writeCoords(ofstream& outstream, const string& sep, const string& end)const {
     for(auto& coord: position){
         outstream<<coord<<sep;
     }
     outstream<<end;
 }
 
-GravitationalSystem::  GravitationalSystem(vector<GravitationalBody> bodies, valtype progTime): bodies(bodies), progTime(progTime){}
+GravitationalSystem::  GravitationalSystem(vector<GravitationalBody>&& bodies, valtype progTime): bodies(bodies), progTime(progTime){}
 
-GravitationalSystem::  GravitationalSystem(string infile, valtype progTime): progTime(progTime){
+GravitationalSystem::  GravitationalSystem(string&& infile, valtype progTime): progTime(progTime){
     //expecting inputfile with format ID M X Y  Z VX VY VZ \N
     bodies = vector<GravitationalBody>();
     ifstream instream(infile);

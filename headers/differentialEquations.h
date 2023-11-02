@@ -38,8 +38,8 @@ class MomentumDerivative : public Derivative{
 class GravitationalIntegrator : private Integrator, public GravitationalSystem{
     public:
         string integrator;
-        GravitationalIntegrator(vector<GravitationalBody>, valtype, valtype = 0, string = "euler");
-        GravitationalIntegrator(string infile, valtype, valtype = 0, string = "euler");
+        GravitationalIntegrator(vector<GravitationalBody>&&, valtype, valtype = 0, string = "euler");
+        GravitationalIntegrator(string&& infile, valtype, valtype = 0, string = "euler");
     
     private:
         void nextStepAll();

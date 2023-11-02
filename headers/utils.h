@@ -9,5 +9,5 @@
 long double Q_rsqrt(long double);
 double      Q_rsqrt(double);
 
-valtype distSquare(vector<valtype> p1, vector<valtype> p2);
+valtype distSquare(vector<valtype> const &p1, vector<valtype> const &p2);
 #endif
